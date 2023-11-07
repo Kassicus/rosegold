@@ -14,3 +14,5 @@ window_size = pygame.math.Vector2(1920, 1080)
 events = None
 deltatime = 0
 framerate = 120
+
+gravity = 8

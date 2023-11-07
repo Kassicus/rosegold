@@ -1,6 +1,7 @@
 import pygame
 
 import lib
+import world
 
 pygame.init()
 
@@ -12,6 +13,12 @@ class Game():
         self.running = True
         self.clock = pygame.time.Clock()
         lib.events = pygame.event.get()
+
+        self.worlds = []
+
+        self.worlds.append(world.world_one)
+
+        self.active_world = self.worlds[0]
 
     def start(self):
         while self.running:
@@ -33,7 +40,11 @@ class Game():
     def draw(self):
         self.screen.fill(lib.color.black)
 
+        self.active_world.draw(self.screen)
+
     def update(self):
+        self.active_world.update()
+
         pygame.display.update()
         lib.deltatime = self.clock.tick(lib.framerate) / 1000
 
