@@ -1,2 +1,3 @@
-# rosegold
-Project Rose Gold
+# Project Rose Gold
+
+Monochromatic puzzle platformer?
