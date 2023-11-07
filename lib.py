@@ -9,7 +9,7 @@ class Colors():
         self.blue = pygame.Color(0, 0, 255)
 
 color = Colors()
-window_size = pygame.math.Vector2(1920, 1080)
+window_size = pygame.math.Vector2(1440, 980)
 
 events = None
 deltatime = 0

@@ -27,5 +27,5 @@ class World():
 
 world_one = World()
 
-world_one.add_level(100, 100)
+world_one.add_level(600, 50)
 world_one.set_active_level(0)
