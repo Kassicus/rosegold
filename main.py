@@ -42,8 +42,12 @@ class Game():
 
         self.active_world.draw(self.screen)
 
+        lib.friendly_projectiles.draw(self.screen)
+
     def update(self):
         self.active_world.update()
+
+        lib.friendly_projectiles.update()
 
         pygame.display.update()
         lib.deltatime = self.clock.tick(lib.framerate) / 1000

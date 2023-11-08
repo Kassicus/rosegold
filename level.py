@@ -28,11 +28,11 @@ class Level():
                 if abs(self.player.rect.right - t.rect.left) < collision_tollerance:
                     self.player.vel.x = 0
                     self.player.pos.x = t.rect.left - self.player.rect.width / 2
-
-                if self.player.state != 'standing':
-                    if abs(self.player.rect.top - t.rect.bottom) < collision_tollerance:
+                if abs(self.player.rect.top - t.rect.bottom) < collision_tollerance:
                         self.player.vel.y = 0
                         self.player.pos.y = t.rect.bottom + self.player.rect.height / 2
+
+                if self.player.state != 'standing':
                     if abs(self.player.rect.bottom - t.rect.top) < collision_tollerance:
                         self.player.vel.y = 0
                         self.player.vspeed = 0
@@ -41,6 +41,10 @@ class Level():
                         self.player.can_jump = True
             else:
                 self.player.state = 'falling'
+
+            for p in lib.friendly_projectiles:
+                if p.rect.colliderect(t.rect):
+                    p.kill()
 
     def draw(self, surface):
         self.player_container.draw(surface)

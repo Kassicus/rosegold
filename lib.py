@@ -16,3 +16,6 @@ deltatime = 0
 framerate = 120
 
 gravity = 8
+
+friendly_projectiles = pygame.sprite.Group()
+enemy_projectiles = pygame.sprite.Group()

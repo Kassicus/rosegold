@@ -1,6 +1,7 @@
 import pygame
 
 import lib
+import weapons
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, init_x: int, init_y: int):
@@ -20,6 +21,8 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = self.pos
 
+        self.weapon = weapons.Pistol()
+
     def movement_handler(self):
         keys = pygame.key.get_pressed()
 
@@ -37,6 +40,14 @@ class Player(pygame.sprite.Sprite):
                         self.vel.y = -500
                         self.state = 'falling'
                         self.can_jump = False
+
+                if event.key == pygame.K_r:
+                    self.weapon.reload()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+
+                self.weapon.shoot(self.pos.x, self.pos.y, mouse_x, mouse_y)
 
     def update(self):
         self.vel.y += self.vspeed
