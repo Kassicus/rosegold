@@ -5,7 +5,7 @@ import player
 import mass
 
 class Level():
-    def __init__(self, player_init_x: int, player_init_y: int):
+    def __init__(self, player_init_x: int, player_init_y: int, terrain_map: list):
         self.player_container = pygame.sprite.Group()
         self.terrain_container = pygame.sprite.Group()
 
@@ -13,9 +13,8 @@ class Level():
 
         self.player_container.add(self.player)
 
-        self.terrain_container.add(
-            mass.CollisionMass(300, 500, 300, 20),
-            mass.CollisionMass(500, 400, 300, 20))
+        for mass in terrain_map:
+            self.terrain_container.add(mass)
 
     def do_collision(self):
         collision_tollerance = 15
@@ -63,3 +62,14 @@ class Level():
     # Level completion goals
 
     # Level specific UI
+
+
+# Terrain Groups
+
+test_map = [
+    mass.CollisionMass(0, 0, lib.window_size.x, 20),
+    mass.CollisionMass(0, lib.window_size.y - 20, lib.window_size.x, 20),
+    mass.CollisionMass(0, 20, 20, lib.window_size.y - 40),
+    mass.CollisionMass(lib.window_size.x - 20, 20, 20, lib.window_size.y - 40),
+    mass.CollisionMass(100, 100, lib.window_size.x - 200, 20)
+]

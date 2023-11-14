@@ -8,7 +8,7 @@ class World():
         self.active_level = None
 
     def add_level(self, player_init_x: int, player_init_y: int):
-        self.levels.append(level.Level(player_init_x, player_init_y))
+        self.levels.append(level.Level(player_init_x, player_init_y, level.test_map))
 
     def set_active_level(self, index: int):
         self.active_level = self.levels[index]
